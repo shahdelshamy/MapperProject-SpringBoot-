@@ -1,8 +1,10 @@
 package com.example.controller;
 
+import com.example.configuration.ProjectConfig;
 import com.example.dto.StudentDto;
 import com.example.dto.StudentUpdate;
 import com.example.model.Student;
+import com.example.service.ProjectService;
 import com.example.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private ProjectService projectService;
+
     @PostMapping("/add")
     public ResponseEntity<Student> getStudent(@RequestBody Student s){
         return ResponseEntity.ok(studentService.insert(s));
@@ -28,9 +33,16 @@ public class StudentController {
         return ResponseEntity.ok(studentService.update(s));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<StudentDto> getStudent(@RequestParam int id){
+    @GetMapping("/get/${id}")
+    public ResponseEntity<StudentDto> getStudent(@PathVariable int id){
         return ResponseEntity.ok(studentService.getStudentById(id));
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<String> getDta(){
+        return ResponseEntity.ok(
+            projectService.getMessage()
+        );
     }
 
 }

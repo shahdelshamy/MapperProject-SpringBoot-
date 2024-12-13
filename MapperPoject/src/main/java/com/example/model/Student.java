@@ -6,11 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-@Setter
-@Getter
-@RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Student {
 
@@ -22,7 +17,7 @@ public class Student {
     private String gender;
     private float score;
 
-    /*
+
     public int getId() {
         return id;
     }
@@ -62,5 +57,5 @@ public class Student {
     public void setScore(float score) {
         this.score = score;
     }
-     */
+
 }
